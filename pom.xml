@@ -46,9 +46,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!--
 	<scm>
 		<developerConnection>scm:git:git@github.com:akramSahbi/pet-clinic.git</developerConnection>
-	  <tag>y</tag>
-  </scm>
-
+  	</scm>
+-->
+	<scm>
+		<url>https://github.com/akramSahbi/pet-clinic</url>
+		<connection>scm:git:https://github.com/akramSahbi/pet-clinic.git</connection>
+	</scm>
 </project>
