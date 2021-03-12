@@ -2,10 +2,11 @@ package tn.sahbi.akram.petclinic.model.services.map;
 
 import tn.sahbi.akram.petclinic.model.Pet;
 import tn.sahbi.akram.petclinic.model.services.CrudService;
+import tn.sahbi.akram.petclinic.model.services.PetService;
 
 import java.util.Set;
 
-public class PetMapService extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {
         return super.findById(id);
