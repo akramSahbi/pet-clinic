@@ -4,7 +4,7 @@
 <head>
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -58,12 +58,12 @@
             <span>Home</span>
           </li>
 
-          <li th:replace="::menuItem ('/owners/index','owners','find owners','search','Find owners')">
+          <li th:replace="::menuItem ('/owners/index','owners','find owners','search',#{findOwners})">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <span>Find owners</span>
           </li>
 
-          <li th:replace="::menuItem ('/vets/index','vets','veterinarians','th-list','Veterinarians')">
+          <li th:replace="::menuItem ('/vets/index','vets','veterinarians','th-list',#{veterinarians})">
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
             <span>Veterinarians</span>
           </li>
