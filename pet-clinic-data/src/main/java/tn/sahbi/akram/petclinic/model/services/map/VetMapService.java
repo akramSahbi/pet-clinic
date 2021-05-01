@@ -1,6 +1,7 @@
 package tn.sahbi.akram.petclinic.model.services.map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import tn.sahbi.akram.petclinic.model.Specialty;
 import tn.sahbi.akram.petclinic.model.Vet;
@@ -10,6 +11,7 @@ import tn.sahbi.akram.petclinic.model.services.VetService;
 import java.util.Set;
 
 @Service
+@Profile("map")
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     private final SpecialtiesService specialtiesService;
 
