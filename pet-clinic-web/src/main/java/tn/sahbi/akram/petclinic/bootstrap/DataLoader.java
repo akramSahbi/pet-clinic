@@ -3,10 +3,7 @@ package tn.sahbi.akram.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import tn.sahbi.akram.petclinic.model.*;
-import tn.sahbi.akram.petclinic.model.services.OwnerService;
-import tn.sahbi.akram.petclinic.model.services.PetTypeService;
-import tn.sahbi.akram.petclinic.model.services.SpecialtiesService;
-import tn.sahbi.akram.petclinic.model.services.VetService;
+import tn.sahbi.akram.petclinic.model.services.*;
 
 import java.time.LocalDate;
 
@@ -17,12 +14,17 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtiesService specialtiesService;
+    private final VisitService visitService;
+    private final PetService petService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService) {
+
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService, VisitService visitService, PetService petService) {
         this.petTypeService = petTypeService;
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.specialtiesService = specialtiesService;
+        this.visitService = visitService;
+        this.petService = petService;
     }
 
     @Override
@@ -55,9 +57,20 @@ public class DataLoader implements CommandLineRunner {
         bissa.setOwner(owner1);
         bissa.setName("Bissa");
         bissa.setBirthdate(LocalDate.of(2019, 2, 15));
+
+
         owner1.getPets().add(bissa);
 
         ownerService.save(owner1);
+
+        Visit bissaVisit = new Visit();
+        bissaVisit.setDescription("first vaccine");
+        bissaVisit.setPet(bissa);
+        bissaVisit.setDate(LocalDate.of(2021, 8, 15));
+        visitService.save(bissaVisit);
+
+        bissa.getVisits().add(bissaVisit);
+        petService.save(bissa);
 
         Owner owner2 = new Owner();
         owner2.setId(2L);
@@ -72,9 +85,22 @@ public class DataLoader implements CommandLineRunner {
         riki.setOwner(owner2);
         riki.setName("Riky");
         riki.setBirthdate(LocalDate.of(1990, 2, 15));
+
+
+
         owner2.getPets().add(riki);
 
         ownerService.save(owner2);
+
+        Visit rikiVisit = new Visit();
+        rikiVisit.setDescription("first operation");
+        rikiVisit.setPet(riki);
+        rikiVisit.setDate(LocalDate.of(1991, 8, 15));
+        visitService.save(rikiVisit);
+
+        riki.getVisits().add(rikiVisit);
+        petService.save(riki);
+
 
         System.out.println("------------------Loaded owners!------------------");
 
