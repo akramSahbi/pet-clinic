@@ -51,13 +51,14 @@ public class DataLoader implements CommandLineRunner {
         owner1.setAddress("borj louzir");
         owner1.setCity("ariana");
         owner1.setPhone("28744783");
+        owner1 = ownerService.save(owner1);
 
         Pet bissa = new Pet();
         bissa.setPetType(cat);
         bissa.setOwner(owner1);
         bissa.setName("Bissa");
         bissa.setBirthdate(LocalDate.of(2019, 2, 15));
-
+        bissa = petService.save(bissa);
 
         owner1.getPets().add(bissa);
 
@@ -79,13 +80,14 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("borj louzir");
         owner2.setCity("ariana");
         owner2.setPhone("20747198");
+        owner2 = ownerService.save(owner2);
 
         Pet riki = new Pet();
         riki.setPetType(dog);
         riki.setOwner(owner2);
         riki.setName("Riky");
         riki.setBirthdate(LocalDate.of(1990, 2, 15));
-
+        riki = petService.save(riki);
 
 
         owner2.getPets().add(riki);
