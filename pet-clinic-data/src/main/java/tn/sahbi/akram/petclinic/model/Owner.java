@@ -1,5 +1,7 @@
 package tn.sahbi.akram.petclinic.model;
 
+import lombok.*;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -9,43 +11,25 @@ import java.util.Set;
 
 @Entity
 @Table(name = "owners")
+@Getter
+@Setter
+@NoArgsConstructor
+
 public class Owner extends Person {
     private String address;
     private String city;
     private String phone;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    private Set<Pet> pets = new HashSet<>();
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
+    @Builder
+    public Owner(String firstName, String lastName, String address, String city, String phone, Set<Pet> pets) {
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
         this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Set<Pet> pets = new HashSet<>();
 }
