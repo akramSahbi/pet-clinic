@@ -41,6 +41,7 @@ class OwnerMapServiceTest {
     @Order(2)
     @Test
     void findAll() {
+        ownerMapService.save(owner);
         Set<Owner> owners = ownerMapService.findAll();
         assertEquals(1, owners.size());
     }
