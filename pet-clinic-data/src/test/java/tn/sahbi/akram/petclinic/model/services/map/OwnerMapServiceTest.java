@@ -50,6 +50,7 @@ class OwnerMapServiceTest {
     @Order(3)
     @Test
     void findByLastName() {
+        ownerMapService.save(owner);
         Owner actualOwner = ownerMapService.findByLastName("sahbi");
         System.out.println(actualOwner);
         assertEquals("akram", actualOwner.getFirstName());
@@ -58,6 +59,7 @@ class OwnerMapServiceTest {
     @Order(4)
     @Test
     void delete() {
+        ownerMapService.save(owner);
         ownerMapService.delete(owner);
         Set<Owner> owners = ownerMapService.findAll();
         assertEquals(0, owners.size());
