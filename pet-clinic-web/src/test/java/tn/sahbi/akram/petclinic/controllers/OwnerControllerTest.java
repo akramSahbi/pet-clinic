@@ -11,10 +11,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import tn.sahbi.akram.petclinic.model.Owner;
 import tn.sahbi.akram.petclinic.model.services.OwnerService;
+
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -54,7 +55,9 @@ class OwnerControllerTest {
         owner2.setId(2L);
         owner2.setFirstName("nihed");
         owner2.setLastName("mosbeh");
-        Set<Owner> ownersSet = Set.of(owner1, owner2);
+        Set<Owner> ownersSet = new HashSet<>();
+        ownersSet.add(owner1);
+        ownersSet.add(owner2);
         return ownersSet;
     }
 }

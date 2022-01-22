@@ -9,9 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tn.sahbi.akram.petclinic.model.Owner;
 import tn.sahbi.akram.petclinic.model.repositories.OwnerRepository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,7 +45,7 @@ class OwnersSpringDataJpaServiceTest {
 
     @Test
     void findAll() {
-        when(ownerRepository.findAll()).thenReturn(Set.of(getOwner()));
+        when(ownerRepository.findAll()).thenReturn(getOwnersSet());
         Set<Owner> actualOwners = ownersSpringDataJpaService.findAll();
         assertEquals(1, actualOwners.size());
     }
@@ -69,6 +67,13 @@ class OwnersSpringDataJpaServiceTest {
         when(ownerRepository.findByLastName(SAHBI)).thenReturn(Optional.of(getOwner()));
         Owner actualOwner = ownersSpringDataJpaService.findByLastName(SAHBI);
         assertEquals(getOwner().getId(), actualOwner.getId());
+    }
+
+    private Set<Owner> getOwnersSet() {
+        Owner owner = getOwner();
+        Set<Owner> owners = new HashSet<>();
+        owners.add(owner);
+        return owners;
     }
 
     private Owner getOwner() {

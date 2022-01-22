@@ -18,7 +18,7 @@
 	<name>pet-clinic</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>15</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<build>
